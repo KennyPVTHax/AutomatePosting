@@ -1,0 +1,12 @@
+python-telegram-bot==21.6
+aiohttp>=3.10,<4
+fastapi>=0.115
+uvicorn>=0.30
+python-multipart>=0.0.9
+tzdata
+# YouTube uploads
+google-api-python-client>=2.149
+google-auth-oauthlib>=1.2.1
+google-auth-httplib2>=0.2.0
+# Public-video URL imports (no account cookies or DRM bypass)
+yt-dlp>=2026.10
