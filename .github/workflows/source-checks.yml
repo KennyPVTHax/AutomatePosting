@@ -1,0 +1,24 @@
+name: Source checks
+on:
+  push:
+  pull_request:
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Python compile
+        run: python -m compileall -q .
+      - name: Shell syntax
+        run: |
+          for f in install_v7_service.sh publish_to_github.sh setup.sh; do
+            if test -f "$f"; then bash -n "$f"; fi
+          done
+      - name: Reject tracked secrets and runtime data
+        run: |
+          if git ls-files | grep -Ei '(^|/)(\.env($|\.(local|production|development|test)$)|channels\.json|client_secret[^/]*\.json|token\.json|tokens/|data/|assets/|venv/|\.venv/)|\.(pem|key)$'; then
+            echo 'Potential sensitive file tracked'; exit 1
+          fi
