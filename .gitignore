@@ -1,0 +1,27 @@
+# Secrets and private OAuth credentials
+.env
+.env.*
+!.env.example
+channels.json
+**/client_secret*.json
+**/*credentials*.json
+**/token.json
+**/tokens/
+*.pem
+*.key
+# Runtime data and private assets
+/data/
+/assets/
+/uploads/
+/outputs/
+/logs/
+*.sqlite*
+*.db
+# Environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.DS_Store
